@@ -29,7 +29,7 @@
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g. 123.56" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yK7-tz-TcH" userLabel="Bill Text Field">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g. 124.56" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yK7-tz-TcH" userLabel="Bill Text Field">
                                         <rect key="frame" x="0.0" y="56" width="393" height="48"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -77,6 +77,9 @@
                                                         <state key="normal" title="0%">
                                                             <color key="titleColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tipChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DZU-4P-8Tb"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fd9-HV-gZg" userLabel="Ten Pct Button">
                                                         <rect key="frame" x="95.333333333333329" y="0.0" width="162.33333333333337" height="54"/>
@@ -89,6 +92,9 @@
                                                         <state key="normal" title="10%">
                                                             <color key="titleColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tipChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kyd-zd-ZJq"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKQ-FU-Kcv" userLabel="Twenty Pct Button">
                                                         <rect key="frame" x="257.66666666666669" y="0.0" width="95.333333333333314" height="54"/>
@@ -101,6 +107,9 @@
                                                         <state key="normal" title="20%">
                                                             <color key="titleColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tipChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dND-As-plO"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -129,12 +138,16 @@
                                                         <color key="textColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="nhW-Kq-S0b">
+                                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minimumValue="2" maximumValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="nhW-Kq-S0b">
                                                         <rect key="frame" x="199" y="0.0" width="94" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="29" id="5aB-mD-xME"/>
                                                             <constraint firstAttribute="width" constant="94" id="EEQ-Nd-btn"/>
                                                         </constraints>
+                                                        <color key="tintColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="stepperValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="bb0-5k-knW"/>
+                                                        </connections>
                                                     </stepper>
                                                 </subviews>
                                             </stackView>
@@ -170,6 +183,9 @@
                                 <state key="normal" title="Calculate">
                                     <color key="titleColor" red="0.97254901959999995" green="1" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="calculatePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qfj-gb-f5j"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -187,7 +203,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="Pd4-cO-3hN" kind="presentation" identifier="goToResults" id="y0Z-WI-adC"/>
+                        <outlet property="billTextField" destination="yK7-tz-TcH" id="xA6-L1-OgD"/>
+                        <outlet property="splitNumberLabel" destination="TgE-Bf-HyV" id="wda-Ug-cAa"/>
+                        <outlet property="tenPctButton" destination="Fd9-HV-gZg" id="xol-sv-Fq6"/>
+                        <outlet property="twentyPctButton" destination="XKQ-FU-Kcv" id="jpi-I5-dUN"/>
+                        <outlet property="zeroPctButton" destination="8jY-Pq-UAI" id="5ax-m3-V0l"/>
+                        <segue destination="Pd4-cO-3hN" kind="presentation" identifier="goToResults" id="UYJ-NZ-dL4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -214,7 +235,7 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="56.32" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alc-NT-zkM" userLabel="Total Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="68.51" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alc-NT-zkM" userLabel="Total Label">
                                         <rect key="frame" x="0.0" y="168" width="393" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="ADI-a5-cqf"/>
@@ -256,6 +277,9 @@
                                 <state key="normal" title="Recalculate">
                                     <color key="titleColor" red="0.97254901960784312" green="1" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="recalculatePressed:" destination="Pd4-cO-3hN" eventType="touchUpInside" id="Nlb-mY-dgE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dJN-Ml-4qs"/>
@@ -271,6 +295,10 @@
                             <constraint firstItem="5Kb-ka-YAd" firstAttribute="bottom" secondItem="dJN-Ml-4qs" secondAttribute="bottom" id="vi1-iZ-Dc2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="settingsLabel" destination="G0I-5D-ZJO" id="9zI-Hb-Hzl"/>
+                        <outlet property="totalLabel" destination="Alc-NT-zkM" id="Nxf-je-efq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDV-rG-RmU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
